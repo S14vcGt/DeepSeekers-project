@@ -1,1 +1,6 @@
 tensorflow
+cv2
+pandas
+sklearn
+matplotlib
+pyautogui
