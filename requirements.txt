@@ -4,3 +4,5 @@ pandas
 sklearn
 matplotlib
 pyautogui
+kagglehub
+seaborn
