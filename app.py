@@ -1,13 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from env_script import download_model
+from env_script import download_model, uploads_folder
 import model
 import os
 
-download_model()
 uploads='uploads'
-os.makedirs(uploads, exist_ok=True)
-print(f"Carpeta '{uploads}' creada exitosamente.")
+download_model()
+uploads_folder(uploads)
 
 app = Flask(__name__)
 CORS(app)
