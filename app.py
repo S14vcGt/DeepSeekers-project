@@ -5,6 +5,10 @@ import model
 import os
 
 download_model()
+uploads='uploads'
+os.makedirs(uploads, exist_ok=True)
+print(f"Carpeta '{uploads}' creada exitosamente.")
+
 app = Flask(__name__)
 CORS(app)
 
@@ -20,7 +24,7 @@ def predict():
     if file.filename == "":
         return jsonify({"error": "No selected file"}), 400
 
-    file_path = os.path.join('uploads', file.filename)
+    file_path = os.path.join(uploads, file.filename)
     file.save(file_path)
 
     result: dict = model.predict_plant(file_path)
