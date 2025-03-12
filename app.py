@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from env_script import download_model
 import model
 import os
 
+download_model()
 app = Flask(__name__)
 CORS(app)
+
 
 @app.route('/api/predict', methods=['POST'])
 def predict():
@@ -20,7 +23,7 @@ def predict():
     file_path = os.path.join('uploads', file.filename)
     file.save(file_path)
 
-    result:dict = model.predict_plant(file_path)
+    result: dict = model.predict_plant(file_path)
     return jsonify(result)
 
 
