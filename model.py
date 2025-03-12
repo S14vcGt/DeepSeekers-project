@@ -46,6 +46,3 @@ def predict_plant(image_path):
         results[class_names[idx]] = float(predictions[0][idx])
     return results
 
-
-if __name__ == '__main__':
-    pass

@@ -6,8 +6,8 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/answer', methods=['POST'])
-def answer():
+@app.route('/api/predict', methods=['POST'])
+def predict():
 
     if "file" not in request.files:
         return jsonify({"error": "No file part"}), 400
@@ -20,7 +20,7 @@ def answer():
     file_path = os.path.join('uploads', file.filename)
     file.save(file_path)
 
-    result = model.predict_plant(file_path)
+    result:dict = model.predict_plant(file_path)
     return jsonify(result)
 
 
